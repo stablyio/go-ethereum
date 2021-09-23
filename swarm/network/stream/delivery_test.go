@@ -27,15 +27,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/simulations/adapters"
-	p2ptest "github.com/ethereum/go-ethereum/p2p/testing"
-	"github.com/ethereum/go-ethereum/swarm/log"
-	"github.com/ethereum/go-ethereum/swarm/network"
-	"github.com/ethereum/go-ethereum/swarm/network/simulation"
-	"github.com/ethereum/go-ethereum/swarm/state"
-	"github.com/ethereum/go-ethereum/swarm/storage"
+	"github.com/stablyio/go-ethereum/node"
+	"github.com/stablyio/go-ethereum/p2p"
+	"github.com/stablyio/go-ethereum/p2p/simulations/adapters"
+	p2ptest "github.com/stablyio/go-ethereum/p2p/testing"
+	"github.com/stablyio/go-ethereum/swarm/log"
+	"github.com/stablyio/go-ethereum/swarm/network"
+	"github.com/stablyio/go-ethereum/swarm/network/simulation"
+	"github.com/stablyio/go-ethereum/swarm/state"
+	"github.com/stablyio/go-ethereum/swarm/storage"
 )
 
 func TestStreamerRetrieveRequest(t *testing.T) {

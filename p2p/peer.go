@@ -25,11 +25,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common/mclock"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/discover"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/stablyio/go-ethereum/common/mclock"
+	"github.com/stablyio/go-ethereum/event"
+	"github.com/stablyio/go-ethereum/log"
+	"github.com/stablyio/go-ethereum/p2p/discover"
+	"github.com/stablyio/go-ethereum/rlp"
 )
 
 var (

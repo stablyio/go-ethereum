@@ -22,11 +22,11 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/common/hexutil"
+	"github.com/stablyio/go-ethereum/common/hexutil"
 
-	"github.com/ethereum/go-ethereum/cmd/utils"
-	swarm "github.com/ethereum/go-ethereum/swarm/api/client"
-	"github.com/ethereum/go-ethereum/swarm/storage/mru"
+	"github.com/stablyio/go-ethereum/cmd/utils"
+	swarm "github.com/stablyio/go-ethereum/swarm/api/client"
+	"github.com/stablyio/go-ethereum/swarm/storage/mru"
 	"gopkg.in/urfave/cli.v1"
 )
 

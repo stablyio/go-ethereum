@@ -24,10 +24,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/protocols"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/swarm/log"
+	"github.com/stablyio/go-ethereum/p2p"
+	"github.com/stablyio/go-ethereum/p2p/protocols"
+	"github.com/stablyio/go-ethereum/rlp"
+	"github.com/stablyio/go-ethereum/swarm/log"
 )
 
 const (

@@ -22,15 +22,15 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/stablyio/go-ethereum/common"
+	"github.com/stablyio/go-ethereum/consensus"
+	"github.com/stablyio/go-ethereum/core"
+	"github.com/stablyio/go-ethereum/core/state"
+	"github.com/stablyio/go-ethereum/core/types"
+	"github.com/stablyio/go-ethereum/eth/downloader"
+	"github.com/stablyio/go-ethereum/event"
+	"github.com/stablyio/go-ethereum/log"
+	"github.com/stablyio/go-ethereum/params"
 )
 
 // Backend wraps all methods required for mining.

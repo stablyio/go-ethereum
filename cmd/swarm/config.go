@@ -29,13 +29,13 @@ import (
 
 	cli "gopkg.in/urfave/cli.v1"
 
-	"github.com/ethereum/go-ethereum/cmd/utils"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/node"
+	"github.com/stablyio/go-ethereum/cmd/utils"
+	"github.com/stablyio/go-ethereum/common"
+	"github.com/stablyio/go-ethereum/log"
+	"github.com/stablyio/go-ethereum/node"
 	"github.com/naoina/toml"
 
-	bzzapi "github.com/ethereum/go-ethereum/swarm/api"
+	bzzapi "github.com/stablyio/go-ethereum/swarm/api"
 )
 
 var (

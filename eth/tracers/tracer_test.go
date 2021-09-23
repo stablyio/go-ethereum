@@ -24,9 +24,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/stablyio/go-ethereum/common"
+	"github.com/stablyio/go-ethereum/core/vm"
+	"github.com/stablyio/go-ethereum/params"
 )
 
 type account struct{}

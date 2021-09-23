@@ -32,13 +32,13 @@ import (
 	"time"
 
 	"github.com/docker/docker/pkg/reexec"
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/internal/cmdtest"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/ethereum/go-ethereum/swarm"
+	"github.com/stablyio/go-ethereum/accounts"
+	"github.com/stablyio/go-ethereum/accounts/keystore"
+	"github.com/stablyio/go-ethereum/internal/cmdtest"
+	"github.com/stablyio/go-ethereum/node"
+	"github.com/stablyio/go-ethereum/p2p"
+	"github.com/stablyio/go-ethereum/rpc"
+	"github.com/stablyio/go-ethereum/swarm"
 )
 
 func init() {

@@ -27,11 +27,11 @@ import (
 	"os"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/swarm/sctx"
-	"github.com/ethereum/go-ethereum/swarm/storage"
+	"github.com/stablyio/go-ethereum/common"
+	"github.com/stablyio/go-ethereum/core/types"
+	"github.com/stablyio/go-ethereum/log"
+	"github.com/stablyio/go-ethereum/swarm/sctx"
+	"github.com/stablyio/go-ethereum/swarm/storage"
 )
 
 func init() {

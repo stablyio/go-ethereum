@@ -19,9 +19,9 @@ package keystore
 import (
 	"math/big"
 
-	ethereum "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/core/types"
+	ethereum "github.com/stablyio/go-ethereum"
+	"github.com/stablyio/go-ethereum/accounts"
+	"github.com/stablyio/go-ethereum/core/types"
 )
 
 // keystoreWallet implements the accounts.Wallet interface for the original

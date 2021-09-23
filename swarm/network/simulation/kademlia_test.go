@@ -22,9 +22,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/p2p/simulations/adapters"
-	"github.com/ethereum/go-ethereum/swarm/network"
+	"github.com/stablyio/go-ethereum/node"
+	"github.com/stablyio/go-ethereum/p2p/simulations/adapters"
+	"github.com/stablyio/go-ethereum/swarm/network"
 )
 
 func TestWaitTillHealthy(t *testing.T) {

@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/crypto/sha3"
-	"github.com/ethereum/go-ethereum/swarm/chunk"
-	"github.com/ethereum/go-ethereum/swarm/storage/encryption"
+	"github.com/stablyio/go-ethereum/crypto/sha3"
+	"github.com/stablyio/go-ethereum/swarm/chunk"
+	"github.com/stablyio/go-ethereum/swarm/storage/encryption"
 )
 
 type chunkEncryption struct {

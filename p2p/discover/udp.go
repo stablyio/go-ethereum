@@ -25,11 +25,11 @@ import (
 	"net"
 	"time"
 
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/p2p/nat"
-	"github.com/ethereum/go-ethereum/p2p/netutil"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/log"
+	"github.com/stablyio/go-ethereum/p2p/nat"
+	"github.com/stablyio/go-ethereum/p2p/netutil"
+	"github.com/stablyio/go-ethereum/rlp"
 )
 
 // Errors

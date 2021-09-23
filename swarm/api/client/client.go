@@ -34,8 +34,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/swarm/api"
-	"github.com/ethereum/go-ethereum/swarm/storage/mru"
+	"github.com/stablyio/go-ethereum/swarm/api"
+	"github.com/stablyio/go-ethereum/swarm/storage/mru"
 )
 
 var (
