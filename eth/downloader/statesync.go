@@ -25,7 +25,7 @@ import (
 	"github.com/stablyio/go-ethereum/common"
 	"github.com/stablyio/go-ethereum/core/rawdb"
 	"github.com/stablyio/go-ethereum/core/state"
-	"github.com/stablyio/go-ethereum/crypto/sha3"
+	"github.com/stablyio/go-ethereum/cryptothor/sha3"
 	"github.com/stablyio/go-ethereum/ethdb"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/trie"

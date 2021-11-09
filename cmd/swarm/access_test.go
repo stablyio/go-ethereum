@@ -30,8 +30,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stablyio/go-ethereum/crypto"
-	"github.com/stablyio/go-ethereum/crypto/sha3"
+	"github.com/stablyio/go-ethereum/cryptothor"
+	"github.com/stablyio/go-ethereum/cryptothor/sha3"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/swarm/api"
 	swarm "github.com/stablyio/go-ethereum/swarm/api/client"
@@ -253,7 +253,7 @@ func TestAccessPK(t *testing.T) {
 	ref := matches[0]
 
 	pk := cluster.Nodes[0].PrivateKey
-	granteePubKey := crypto.CompressPubkey(&pk.PublicKey)
+	granteePubKey := cryptothor.CompressPubkey(&pk.PublicKey)
 
 	publisherDir, err := ioutil.TempDir("", "swarm-account-dir-temp")
 	if err != nil {
@@ -408,7 +408,7 @@ func TestAccessACT(t *testing.T) {
 			continue
 		}
 		pk := v.PrivateKey
-		granteePubKey := crypto.CompressPubkey(&pk.PublicKey)
+		granteePubKey := cryptothor.CompressPubkey(&pk.PublicKey)
 		grantees = append(grantees, hex.EncodeToString(granteePubKey))
 	}
 
@@ -557,8 +557,8 @@ func TestKeypairSanity(t *testing.T) {
 		},
 	} {
 		b, _ := hex.DecodeString(v.granteePub)
-		granteePub, _ := crypto.DecompressPubkey(b)
-		publisherPrivate, _ := crypto.HexToECDSA(v.publisherPriv)
+		granteePub, _ := cryptothor.DecompressPubkey(b)
+		publisherPrivate, _ := cryptothor.HexToECDSA(v.publisherPriv)
 
 		ssKey, err := api.NewSessionKeyPK(publisherPrivate, granteePub, salt)
 		if err != nil {

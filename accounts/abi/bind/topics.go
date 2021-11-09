@@ -24,7 +24,6 @@ import (
 
 	"github.com/stablyio/go-ethereum/accounts/abi"
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
 )
 
 // makeTopics converts a filter query argument list into a filter topic set.

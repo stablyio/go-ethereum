@@ -29,8 +29,7 @@ import (
 	"strconv"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
-	"github.com/stablyio/go-ethereum/crypto/ecies"
+	"github.com/stablyio/go-ethereum/cryptothor/ecies"
 	"github.com/stablyio/go-ethereum/log"
 )
 
@@ -157,8 +156,8 @@ func (msg *sentMessage) sign(key *ecdsa.PrivateKey) error {
 	}
 
 	msg.Raw[0] |= signatureFlag // it is important to set this flag before signing
-	hash := crypto.Keccak256(msg.Raw)
-	signature, err := crypto.Sign(hash, key)
+	hash := cryptothor.Keccak256(msg.Raw)
+	signature, err := cryptothor.Sign(hash, key)
 	if err != nil {
 		msg.Raw[0] &= (0xFF ^ signatureFlag) // clear the flag
 		return err
@@ -337,7 +336,7 @@ func (msg *ReceivedMessage) ValidateAndParse() bool {
 func (msg *ReceivedMessage) SigToPubKey() *ecdsa.PublicKey {
 	defer func() { recover() }() // in case of invalid signature
 
-	pub, err := crypto.SigToPub(msg.hash(), msg.Signature)
+	pub, err := cryptothor.SigToPub(msg.hash(), msg.Signature)
 	if err != nil {
 		log.Error("failed to recover public key from signature", "err", err)
 		return nil
@@ -349,7 +348,7 @@ func (msg *ReceivedMessage) SigToPubKey() *ecdsa.PublicKey {
 func (msg *ReceivedMessage) hash() []byte {
 	if isMessageSigned(msg.Raw[0]) {
 		sz := len(msg.Raw) - signatureLength
-		return crypto.Keccak256(msg.Raw[:sz])
+		return cryptothor.Keccak256(msg.Raw[:sz])
 	}
-	return crypto.Keccak256(msg.Raw)
+	return cryptothor.Keccak256(msg.Raw)
 }

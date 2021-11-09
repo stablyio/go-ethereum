@@ -31,18 +31,18 @@ import (
 	"time"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/stablyio/go-ethereum/crypto"
-	"github.com/stablyio/go-ethereum/crypto/ecies"
-	"github.com/stablyio/go-ethereum/crypto/sha3"
+	"github.com/stablyio/go-ethereum/cryptothor"
+	"github.com/stablyio/go-ethereum/cryptothor/ecies"
+	"github.com/stablyio/go-ethereum/cryptothor/sha3"
 	"github.com/stablyio/go-ethereum/p2p/discover"
 	"github.com/stablyio/go-ethereum/p2p/simulations/pipes"
 	"github.com/stablyio/go-ethereum/rlp"
 )
 
 func TestSharedSecret(t *testing.T) {
-	prv0, _ := crypto.GenerateKey() // = ecdsa.GenerateKey(crypto.S256(), rand.Reader)
+	prv0, _ := cryptothor.GenerateKey() // = ecdsa.GenerateKey(cryptothor.S256(), rand.Reader)
 	pub0 := &prv0.PublicKey
-	prv1, _ := crypto.GenerateKey()
+	prv1, _ := cryptothor.GenerateKey()
 	pub1 := &prv1.PublicKey
 
 	ss0, err := ecies.ImportECDSA(prv0).GenerateShared(ecies.ImportECDSAPublic(pub1), sskLen, sskLen)
@@ -85,8 +85,8 @@ func testEncHandshake(token []byte) error {
 		err  error
 	}
 	var (
-		prv0, _  = crypto.GenerateKey()
-		prv1, _  = crypto.GenerateKey()
+		prv0, _  = cryptothor.GenerateKey()
+		prv1, _  = cryptothor.GenerateKey()
 		fd0, fd1 = net.Pipe()
 		c0, c1   = newRLPX(fd0).(*rlpx), newRLPX(fd1).(*rlpx)
 		output   = make(chan result)
@@ -149,11 +149,11 @@ func testEncHandshake(token []byte) error {
 
 func TestProtocolHandshake(t *testing.T) {
 	var (
-		prv0, _ = crypto.GenerateKey()
+		prv0, _ = cryptothor.GenerateKey()
 		node0   = &discover.Node{ID: discover.PubkeyID(&prv0.PublicKey), IP: net.IP{1, 2, 3, 4}, TCP: 33}
 		hs0     = &protoHandshake{Version: 3, ID: node0.ID, Caps: []Cap{{"a", 0}, {"b", 2}}}
 
-		prv1, _ = crypto.GenerateKey()
+		prv1, _ = cryptothor.GenerateKey()
 		node1   = &discover.Node{ID: discover.PubkeyID(&prv1.PublicKey), IP: net.IP{5, 6, 7, 8}, TCP: 44}
 		hs1     = &protoHandshake{Version: 3, ID: node1.ID, Caps: []Cap{{"c", 1}, {"d", 3}}}
 
@@ -272,8 +272,8 @@ func TestRLPXFrameFake(t *testing.T) {
 	buf := new(bytes.Buffer)
 	hash := fakeHash([]byte{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1})
 	rw := newRLPXFrameRW(buf, secrets{
-		AES:        crypto.Keccak256(),
-		MAC:        crypto.Keccak256(),
+		AES:        cryptothor.Keccak256(),
+		MAC:        cryptothor.Keccak256(),
 		IngressMAC: hash,
 		EgressMAC:  hash,
 	})
@@ -504,14 +504,14 @@ var eip8HandshakeRespTests = []handshakeAckTest{
 
 func TestHandshakeForwardCompatibility(t *testing.T) {
 	var (
-		keyA, _       = crypto.HexToECDSA("49a7b37aa6f6645917e7b807e9d1c00d4fa71f18343b0d4122a4d2df64dd6fee")
-		keyB, _       = crypto.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")
-		pubA          = crypto.FromECDSAPub(&keyA.PublicKey)[1:]
-		pubB          = crypto.FromECDSAPub(&keyB.PublicKey)[1:]
-		ephA, _       = crypto.HexToECDSA("869d6ecf5211f1cc60418a13b9d870b22959d0c16f02bec714c960dd2298a32d")
-		ephB, _       = crypto.HexToECDSA("e238eb8e04fee6511ab04c6dd3c89ce097b11f25d584863ac2b6d5b35b1847e4")
-		ephPubA       = crypto.FromECDSAPub(&ephA.PublicKey)[1:]
-		ephPubB       = crypto.FromECDSAPub(&ephB.PublicKey)[1:]
+		keyA, _       = cryptothor.HexToECDSA("49a7b37aa6f6645917e7b807e9d1c00d4fa71f18343b0d4122a4d2df64dd6fee")
+		keyB, _       = cryptothor.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")
+		pubA          = cryptothor.FromECDSAPub(&keyA.PublicKey)[1:]
+		pubB          = cryptothor.FromECDSAPub(&keyB.PublicKey)[1:]
+		ephA, _       = cryptothor.HexToECDSA("869d6ecf5211f1cc60418a13b9d870b22959d0c16f02bec714c960dd2298a32d")
+		ephB, _       = cryptothor.HexToECDSA("e238eb8e04fee6511ab04c6dd3c89ce097b11f25d584863ac2b6d5b35b1847e4")
+		ephPubA       = cryptothor.FromECDSAPub(&ephA.PublicKey)[1:]
+		ephPubB       = cryptothor.FromECDSAPub(&ephB.PublicKey)[1:]
 		nonceA        = unhex("7e968bba13b6c50e2c4cd7f241cc0d64d1ac25c7f5952df231ac6a2bda8ee5d6")
 		nonceB        = unhex("559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd")
 		_, _, _, _    = pubA, pubB, ephPubA, ephPubB

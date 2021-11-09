@@ -28,7 +28,7 @@ import (
 	"github.com/stablyio/go-ethereum/core"
 	"github.com/stablyio/go-ethereum/core/rawdb"
 	"github.com/stablyio/go-ethereum/core/types"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/eth/downloader"
 	"github.com/stablyio/go-ethereum/ethdb"
 	"github.com/stablyio/go-ethereum/light"
@@ -269,7 +269,7 @@ func testGetCode(t *testing.T, protocol int) {
 		header := bc.GetHeaderByNumber(i)
 		req := &CodeReq{
 			BHash:  header.Hash(),
-			AccKey: crypto.Keccak256(testContractAddr[:]),
+			AccKey: cryptothor.Keccak256(testContractAddr[:]),
 		}
 		codereqs = append(codereqs, req)
 		if i >= testContractDeployed {
@@ -339,17 +339,17 @@ func testGetProofs(t *testing.T, protocol int) {
 		for _, acc := range accounts {
 			req := ProofReq{
 				BHash: header.Hash(),
-				Key:   crypto.Keccak256(acc[:]),
+				Key:   cryptothor.Keccak256(acc[:]),
 			}
 			proofreqs = append(proofreqs, req)
 
 			switch protocol {
 			case 1:
 				var proof light.NodeList
-				trie.Prove(crypto.Keccak256(acc[:]), 0, &proof)
+				trie.Prove(cryptothor.Keccak256(acc[:]), 0, &proof)
 				proofsV1 = append(proofsV1, proof)
 			case 2:
-				trie.Prove(crypto.Keccak256(acc[:]), 0, proofsV2)
+				trie.Prove(cryptothor.Keccak256(acc[:]), 0, proofsV2)
 			}
 		}
 	}

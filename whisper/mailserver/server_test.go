@@ -26,7 +26,7 @@ import (
 	"time"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	whisper "github.com/stablyio/go-ethereum/whisper/whisperv6"
 )
 
@@ -59,7 +59,7 @@ func TestDBKey(t *testing.T) {
 }
 
 func generateEnvelope(t *testing.T) *whisper.Envelope {
-	h := crypto.Keccak256Hash([]byte("test sample data"))
+	h := cryptothor.Keccak256Hash([]byte("test sample data"))
 	params := &whisper.MessageParams{
 		KeySym:   h[:],
 		Topic:    whisper.TopicType{0x1F, 0x7E, 0xA1, 0x7F},
@@ -142,7 +142,7 @@ func deliverTest(t *testing.T, server *WMailServer, env *whisper.Envelope) {
 
 func singleRequest(t *testing.T, server *WMailServer, env *whisper.Envelope, p *ServerTestParams, expect bool) {
 	request := createRequest(t, p)
-	src := crypto.FromECDSAPub(&p.key.PublicKey)
+	src := cryptothor.FromECDSAPub(&p.key.PublicKey)
 	ok, lower, upper, bloom := server.validateRequest(src, request)
 	if !ok {
 		t.Fatalf("request validation failed, seed: %d.", seed)

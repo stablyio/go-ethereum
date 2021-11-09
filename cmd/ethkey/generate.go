@@ -23,10 +23,9 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/pborman/uuid"
 	"github.com/stablyio/go-ethereum/accounts/keystore"
 	"github.com/stablyio/go-ethereum/cmd/utils"
-	"github.com/stablyio/go-ethereum/crypto"
-	"github.com/pborman/uuid"
 	"gopkg.in/urfave/cli.v1"
 )
 

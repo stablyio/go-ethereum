@@ -29,7 +29,7 @@ import (
 	"time"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 )
 
 func TestTable_pingReplace(t *testing.T) {
@@ -578,12 +578,12 @@ func (*preminedTestnet) ping(toid NodeID, toaddr *net.UDPAddr) error { return ni
 // various distances to the given target.
 func (tn *preminedTestnet) mine(target NodeID) {
 	tn.target = target
-	tn.targetSha = crypto.Keccak256Hash(tn.target[:])
+	tn.targetSha = cryptothor.Keccak256Hash(tn.target[:])
 	found := 0
 	for found < bucketSize*10 {
 		k := newkey()
 		id := PubkeyID(&k.PublicKey)
-		sha := crypto.Keccak256Hash(id[:])
+		sha := cryptothor.Keccak256Hash(id[:])
 		ld := logdist(tn.targetSha, sha)
 		if len(tn.dists[ld]) < bucketSize {
 			tn.dists[ld] = append(tn.dists[ld], id)
@@ -654,7 +654,7 @@ func gen(typ interface{}, rand *rand.Rand) interface{} {
 }
 
 func newkey() *ecdsa.PrivateKey {
-	key, err := crypto.GenerateKey()
+	key, err := cryptothor.GenerateKey()
 	if err != nil {
 		panic("couldn't generate key: " + err.Error())
 	}

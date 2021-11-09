@@ -25,7 +25,7 @@ import (
 	"time"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/p2p"
 	"github.com/stablyio/go-ethereum/p2p/discover"
 	"github.com/stablyio/go-ethereum/p2p/nat"
@@ -121,7 +121,7 @@ func initialize(t *testing.T) {
 		if err != nil {
 			t.Fatalf("failed to install the filter: %s.", err)
 		}
-		node.id, err = crypto.HexToECDSA(keys[i])
+		node.id, err = cryptothor.HexToECDSA(keys[i])
 		if err != nil {
 			t.Fatalf("failed convert the key: %s.", keys[i])
 		}

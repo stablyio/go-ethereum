@@ -28,7 +28,6 @@ import (
 
 	mapset "github.com/deckarep/golang-set"
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/p2p"
 	"github.com/stablyio/go-ethereum/rlp"

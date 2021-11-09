@@ -29,10 +29,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/pborman/uuid"
 	"github.com/stablyio/go-ethereum/accounts"
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
-	"github.com/pborman/uuid"
 )
 
 const (

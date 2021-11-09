@@ -21,7 +21,7 @@ import (
 	mrand "math/rand"
 	"testing"
 
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/rlp"
 )
 
@@ -43,7 +43,7 @@ func generateMessageParams() (*MessageParams, error) {
 	p.Topic = BytesToTopic(buf)
 
 	var err error
-	p.Src, err = crypto.GenerateKey()
+	p.Src, err = cryptothor.GenerateKey()
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func singleMessageTest(t *testing.T, symmetric bool) {
 		t.Fatalf("failed generateMessageParams with seed %d: %s.", seed, err)
 	}
 
-	key, err := crypto.GenerateKey()
+	key, err := cryptothor.GenerateKey()
 	if err != nil {
 		t.Fatalf("failed GenerateKey with seed %d: %s.", seed, err)
 	}
@@ -220,7 +220,7 @@ func singleEnvelopeOpenTest(t *testing.T, symmetric bool) {
 		t.Fatalf("failed generateMessageParams with seed %d: %s.", seed, err)
 	}
 
-	key, err := crypto.GenerateKey()
+	key, err := cryptothor.GenerateKey()
 	if err != nil {
 		t.Fatalf("failed GenerateKey with seed %d: %s.", seed, err)
 	}

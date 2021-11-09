@@ -37,7 +37,6 @@ import (
 
 	"github.com/stablyio/go-ethereum/cmd/utils"
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/node"
 	"github.com/stablyio/go-ethereum/rpc"

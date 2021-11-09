@@ -22,14 +22,14 @@ import (
 	mrand "math/rand"
 	"testing"
 
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 )
 
 func TestEnvelopeOpenAcceptsOnlyOneKeyTypeInFilter(t *testing.T) {
 	symKey := make([]byte, aesKeyLength)
 	mrand.Read(symKey)
 
-	asymKey, err := crypto.GenerateKey()
+	asymKey, err := cryptothor.GenerateKey()
 	if err != nil {
 		t.Fatalf("failed GenerateKey with seed %d: %s.", seed, err)
 	}

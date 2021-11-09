@@ -24,7 +24,6 @@ import (
 	"github.com/stablyio/go-ethereum/accounts/keystore"
 	"github.com/stablyio/go-ethereum/cmd/utils"
 	"github.com/stablyio/go-ethereum/console"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/log"
 	"gopkg.in/urfave/cli.v1"
 )

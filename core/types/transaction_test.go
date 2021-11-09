@@ -24,7 +24,7 @@ import (
 	"testing"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/rlp"
 )
 
@@ -80,8 +80,8 @@ func decodeTx(data []byte) (*Transaction, error) {
 }
 
 func defaultTestKey() (*ecdsa.PrivateKey, common.Address) {
-	key, _ := crypto.HexToECDSA("45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8")
-	addr := crypto.PubkeyToAddress(key.PublicKey)
+	key, _ := cryptothor.HexToECDSA("45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8")
+	addr := cryptothor.PubkeyToAddress(key.PublicKey)
 	return key, addr
 }
 
@@ -130,14 +130,14 @@ func TestTransactionPriceNonceSort(t *testing.T) {
 	// Generate a batch of accounts to start with
 	keys := make([]*ecdsa.PrivateKey, 25)
 	for i := 0; i < len(keys); i++ {
-		keys[i], _ = crypto.GenerateKey()
+		keys[i], _ = cryptothor.GenerateKey()
 	}
 
 	signer := HomesteadSigner{}
 	// Generate a batch of transactions with overlapping values, but shifted nonces
 	groups := map[common.Address]Transactions{}
 	for start, key := range keys {
-		addr := crypto.PubkeyToAddress(key.PublicKey)
+		addr := cryptothor.PubkeyToAddress(key.PublicKey)
 		for i := 0; i < 25; i++ {
 			tx, _ := SignTx(NewTransaction(uint64(start+i), common.Address{}, big.NewInt(100), 100, big.NewInt(int64(start+i)), nil), signer, key)
 			groups[addr] = append(groups[addr], tx)
@@ -179,7 +179,7 @@ func TestTransactionPriceNonceSort(t *testing.T) {
 
 // TestTransactionJSON tests serializing/de-serializing to/from JSON.
 func TestTransactionJSON(t *testing.T) {
-	key, err := crypto.GenerateKey()
+	key, err := cryptothor.GenerateKey()
 	if err != nil {
 		t.Fatalf("could not generate key: %v", err)
 	}

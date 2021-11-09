@@ -24,14 +24,14 @@ import (
 	"github.com/stablyio/go-ethereum/accounts/abi/bind/backends"
 	"github.com/stablyio/go-ethereum/contracts/ens/contract"
 	"github.com/stablyio/go-ethereum/core"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 )
 
 var (
-	key, _ = crypto.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")
+	key, _ = cryptothor.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")
 	name   = "my name on ENS"
-	hash   = crypto.Keccak256Hash([]byte("my content"))
-	addr   = crypto.PubkeyToAddress(key.PublicKey)
+	hash   = cryptothor.Keccak256Hash([]byte("my content"))
+	addr   = cryptothor.PubkeyToAddress(key.PublicKey)
 )
 
 func TestENS(t *testing.T) {

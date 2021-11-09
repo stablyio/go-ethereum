@@ -21,14 +21,14 @@ import (
 	"testing"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 )
 
 func TestConfig(t *testing.T) {
 
 	var hexprvkey = "65138b2aa745041b372153550584587da326ab440576b2a1191dd95cee30039c"
 
-	prvkey, err := crypto.HexToECDSA(hexprvkey)
+	prvkey, err := cryptothor.HexToECDSA(hexprvkey)
 	if err != nil {
 		t.Fatalf("failed to load private key: %v", err)
 	}

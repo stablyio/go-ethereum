@@ -20,7 +20,6 @@ import (
 	"crypto/ecdsa"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
 )
 
 const signatureLength = 65

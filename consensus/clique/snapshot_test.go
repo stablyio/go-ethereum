@@ -26,7 +26,7 @@ import (
 	"github.com/stablyio/go-ethereum/core"
 	"github.com/stablyio/go-ethereum/core/rawdb"
 	"github.com/stablyio/go-ethereum/core/types"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/ethdb"
 	"github.com/stablyio/go-ethereum/params"
 )
@@ -53,20 +53,20 @@ func newTesterAccountPool() *testerAccountPool {
 func (ap *testerAccountPool) sign(header *types.Header, signer string) {
 	// Ensure we have a persistent key for the signer
 	if ap.accounts[signer] == nil {
-		ap.accounts[signer], _ = crypto.GenerateKey()
+		ap.accounts[signer], _ = cryptothor.GenerateKey()
 	}
 	// Sign the header and embed the signature in extra data
-	sig, _ := crypto.Sign(sigHash(header).Bytes(), ap.accounts[signer])
+	sig, _ := cryptothor.Sign(sigHash(header).Bytes(), ap.accounts[signer])
 	copy(header.Extra[len(header.Extra)-65:], sig)
 }
 
 func (ap *testerAccountPool) address(account string) common.Address {
 	// Ensure we have a persistent key for the account
 	if ap.accounts[account] == nil {
-		ap.accounts[account], _ = crypto.GenerateKey()
+		ap.accounts[account], _ = cryptothor.GenerateKey()
 	}
 	// Resolve and return the Ethereum address
-	return crypto.PubkeyToAddress(ap.accounts[account].PublicKey)
+	return cryptothor.PubkeyToAddress(ap.accounts[account].PublicKey)
 }
 
 // testerChainReader implements consensus.ChainReader to access the genesis

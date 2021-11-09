@@ -28,7 +28,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stablyio/go-ethereum/crypto"
+	colorable "github.com/mattn/go-colorable"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/node"
 	"github.com/stablyio/go-ethereum/p2p/discover"
@@ -37,7 +38,6 @@ import (
 	"github.com/stablyio/go-ethereum/swarm/network"
 	"github.com/stablyio/go-ethereum/swarm/network/simulation"
 	"github.com/stablyio/go-ethereum/swarm/storage"
-	colorable "github.com/mattn/go-colorable"
 )
 
 var (
@@ -281,7 +281,7 @@ func testSwarmNetwork(t *testing.T, o *testSwarmNetworkOptions, steps ...testSwa
 
 			config.Path = dir
 
-			privkey, err := crypto.GenerateKey()
+			privkey, err := cryptothor.GenerateKey()
 			if err != nil {
 				return nil, cleanup, err
 			}

@@ -20,7 +20,7 @@ import (
 	"crypto/sha256"
 	"testing"
 
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"golang.org/x/crypto/pbkdf2"
 )
 
@@ -56,7 +56,7 @@ func BenchmarkEncryptionAsym(b *testing.B) {
 	if err != nil {
 		b.Fatalf("failed generateMessageParams with seed %d: %s.", seed, err)
 	}
-	key, err := crypto.GenerateKey()
+	key, err := cryptothor.GenerateKey()
 	if err != nil {
 		b.Fatalf("failed GenerateKey with seed %d: %s.", seed, err)
 	}
@@ -123,7 +123,7 @@ func BenchmarkDecryptionAsymValid(b *testing.B) {
 	if err != nil {
 		b.Fatalf("failed generateMessageParams with seed %d: %s.", seed, err)
 	}
-	key, err := crypto.GenerateKey()
+	key, err := cryptothor.GenerateKey()
 	if err != nil {
 		b.Fatalf("failed GenerateKey with seed %d: %s.", seed, err)
 	}
@@ -151,7 +151,7 @@ func BenchmarkDecryptionAsymInvalid(b *testing.B) {
 	if err != nil {
 		b.Fatalf("failed generateMessageParams with seed %d: %s.", seed, err)
 	}
-	key, err := crypto.GenerateKey()
+	key, err := cryptothor.GenerateKey()
 	if err != nil {
 		b.Fatalf("failed GenerateKey with seed %d: %s.", seed, err)
 	}
@@ -163,7 +163,7 @@ func BenchmarkDecryptionAsymInvalid(b *testing.B) {
 		b.Fatalf("failed Wrap with seed %d: %s.", seed, err)
 	}
 
-	key, err = crypto.GenerateKey()
+	key, err = cryptothor.GenerateKey()
 	if err != nil {
 		b.Fatalf("failed GenerateKey with seed %d: %s.", seed, err)
 	}

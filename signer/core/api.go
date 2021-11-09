@@ -30,7 +30,6 @@ import (
 	"github.com/stablyio/go-ethereum/accounts/usbwallet"
 	"github.com/stablyio/go-ethereum/common"
 	"github.com/stablyio/go-ethereum/common/hexutil"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/internal/ethapi"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/rlp"

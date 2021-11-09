@@ -27,7 +27,6 @@ import (
 	"github.com/stablyio/go-ethereum/common"
 	"github.com/stablyio/go-ethereum/contracts/ens/contract"
 	"github.com/stablyio/go-ethereum/core/types"
-	"github.com/stablyio/go-ethereum/crypto"
 )
 
 var (

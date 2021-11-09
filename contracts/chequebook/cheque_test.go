@@ -29,16 +29,16 @@ import (
 	"github.com/stablyio/go-ethereum/common"
 	"github.com/stablyio/go-ethereum/contracts/chequebook/contract"
 	"github.com/stablyio/go-ethereum/core"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 )
 
 var (
-	key0, _ = crypto.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")
-	key1, _ = crypto.HexToECDSA("8a1f9a8f95be41cd7ccb6168179afb4504aefe388d1e14474d32c45c72ce7b7a")
-	key2, _ = crypto.HexToECDSA("49a7b37aa6f6645917e7b807e9d1c00d4fa71f18343b0d4122a4d2df64dd6fee")
-	addr0   = crypto.PubkeyToAddress(key0.PublicKey)
-	addr1   = crypto.PubkeyToAddress(key1.PublicKey)
-	addr2   = crypto.PubkeyToAddress(key2.PublicKey)
+	key0, _ = cryptothor.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")
+	key1, _ = cryptothor.HexToECDSA("8a1f9a8f95be41cd7ccb6168179afb4504aefe388d1e14474d32c45c72ce7b7a")
+	key2, _ = cryptothor.HexToECDSA("49a7b37aa6f6645917e7b807e9d1c00d4fa71f18343b0d4122a4d2df64dd6fee")
+	addr0   = cryptothor.PubkeyToAddress(key0.PublicKey)
+	addr1   = cryptothor.PubkeyToAddress(key1.PublicKey)
+	addr2   = cryptothor.PubkeyToAddress(key2.PublicKey)
 )
 
 func newTestBackend() *backends.SimulatedBackend {

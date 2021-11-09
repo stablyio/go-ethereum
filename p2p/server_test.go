@@ -25,8 +25,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stablyio/go-ethereum/crypto"
-	"github.com/stablyio/go-ethereum/crypto/sha3"
+	"github.com/stablyio/go-ethereum/cryptothor"
+	"github.com/stablyio/go-ethereum/cryptothor/sha3"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/p2p/discover"
 )
@@ -595,7 +595,7 @@ func (c *setupTransport) ReadMsg() (Msg, error) {
 }
 
 func newkey() *ecdsa.PrivateKey {
-	key, err := crypto.GenerateKey()
+	key, err := cryptothor.GenerateKey()
 	if err != nil {
 		panic("couldn't generate key: " + err.Error())
 	}

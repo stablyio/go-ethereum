@@ -32,7 +32,6 @@ import (
 	"github.com/stablyio/go-ethereum/contracts/chequebook"
 	"github.com/stablyio/go-ethereum/contracts/chequebook/contract"
 	"github.com/stablyio/go-ethereum/core/types"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/swarm/log"
 	"github.com/stablyio/go-ethereum/swarm/services/swap/swap"
 )

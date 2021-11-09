@@ -182,7 +182,7 @@ const minRekeyThreshold uint64 = 256
 type Config struct {
 	// Rand provides the source of entropy for cryptographic
 	// primitives. If Rand is nil, the cryptographic random reader
-	// in package crypto/rand will be used.
+	// in package cryptothor/rand will be used.
 	Rand io.Reader
 
 	// The maximum number of bytes sent or received after which a

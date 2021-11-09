@@ -25,6 +25,7 @@ import (
 	"sync"
 	"time"
 
+	lru "github.com/hashicorp/golang-lru"
 	"github.com/stablyio/go-ethereum/accounts"
 	"github.com/stablyio/go-ethereum/common"
 	"github.com/stablyio/go-ethereum/common/hexutil"
@@ -32,14 +33,12 @@ import (
 	"github.com/stablyio/go-ethereum/consensus/misc"
 	"github.com/stablyio/go-ethereum/core/state"
 	"github.com/stablyio/go-ethereum/core/types"
-	"github.com/stablyio/go-ethereum/crypto"
-	"github.com/stablyio/go-ethereum/crypto/sha3"
+	"github.com/stablyio/go-ethereum/cryptothor/sha3"
 	"github.com/stablyio/go-ethereum/ethdb"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/params"
 	"github.com/stablyio/go-ethereum/rlp"
 	"github.com/stablyio/go-ethereum/rpc"
-	lru "github.com/hashicorp/golang-lru"
 )
 
 const (
@@ -180,12 +179,12 @@ func ecrecover(header *types.Header, sigcache *lru.ARCCache) (common.Address, er
 	signature := header.Extra[len(header.Extra)-extraSeal:]
 
 	// Recover the public key and the Ethereum address
-	pubkey, err := crypto.Ecrecover(sigHash(header).Bytes(), signature)
+	pubkey, err := cryptothor.Ecrecover(sigHash(header).Bytes(), signature)
 	if err != nil {
 		return common.Address{}, err
 	}
 	var signer common.Address
-	copy(signer[:], crypto.Keccak256(pubkey[1:])[12:])
+	copy(signer[:], cryptothor.Keccak256(pubkey[1:])[12:])
 
 	sigcache.Add(hash, signer)
 	return signer, nil

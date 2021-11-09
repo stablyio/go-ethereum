@@ -25,7 +25,6 @@ import (
 	"github.com/stablyio/go-ethereum/accounts/keystore"
 	"github.com/stablyio/go-ethereum/common"
 	"github.com/stablyio/go-ethereum/core/types"
-	"github.com/stablyio/go-ethereum/crypto"
 )
 
 // NewTransactor is a utility method to easily create a transaction signer from

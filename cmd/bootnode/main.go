@@ -25,7 +25,6 @@ import (
 	"os"
 
 	"github.com/stablyio/go-ethereum/cmd/utils"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/p2p/discover"
 	"github.com/stablyio/go-ethereum/p2p/discv5"

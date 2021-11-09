@@ -27,7 +27,7 @@ import (
 	"strings"
 
 	"github.com/stablyio/go-ethereum/common/hexutil"
-	"github.com/stablyio/go-ethereum/crypto/sha3"
+	"github.com/stablyio/go-ethereum/cryptothor/sha3"
 )
 
 // Lengths of hashes and addresses in bytes.

@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
+//go:build none
 // +build none
 
 // This program generates contract/code.go, which contains the chequebook code
@@ -29,7 +30,6 @@ import (
 	"github.com/stablyio/go-ethereum/accounts/abi/bind/backends"
 	"github.com/stablyio/go-ethereum/contracts/chequebook/contract"
 	"github.com/stablyio/go-ethereum/core"
-	"github.com/stablyio/go-ethereum/crypto"
 )
 
 var (
