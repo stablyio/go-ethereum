@@ -23,7 +23,7 @@ import (
 
 	"github.com/stablyio/go-ethereum/common"
 	"github.com/stablyio/go-ethereum/core/rawdb"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/eth"
 	"github.com/stablyio/go-ethereum/ethdb"
 	"github.com/stablyio/go-ethereum/light"
@@ -32,7 +32,7 @@ import (
 var testBankSecureTrieKey = secAddr(testBankAddress)
 
 func secAddr(addr common.Address) []byte {
-	return crypto.Keccak256(addr[:])
+	return cryptothor.Keccak256(addr[:])
 }
 
 type accessTestFn func(db ethdb.Database, bhash common.Hash, number uint64) light.OdrRequest
@@ -78,8 +78,8 @@ func tfCodeAccess(db ethdb.Database, bhash common.Hash, num uint64) light.OdrReq
 		return nil
 	}
 	sti := light.StateTrieID(header)
-	ci := light.StorageTrieID(sti, crypto.Keccak256Hash(testContractAddr[:]), common.Hash{})
-	return &light.CodeRequest{Id: ci, Hash: crypto.Keccak256Hash(testContractCodeDeployed)}
+	ci := light.StorageTrieID(sti, cryptothor.Keccak256Hash(testContractAddr[:]), common.Hash{})
+	return &light.CodeRequest{Id: ci, Hash: cryptothor.Keccak256Hash(testContractCodeDeployed)}
 }
 
 func testAccess(t *testing.T, protocol int, fn accessTestFn) {

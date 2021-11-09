@@ -25,7 +25,6 @@ import (
 	"time"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/p2p/nat"
 	"github.com/stablyio/go-ethereum/p2p/netutil"

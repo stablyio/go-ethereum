@@ -28,8 +28,7 @@ import (
 
 	"github.com/stablyio/go-ethereum/common"
 	"github.com/stablyio/go-ethereum/common/math"
-	"github.com/stablyio/go-ethereum/crypto"
-	"github.com/stablyio/go-ethereum/crypto/ecies"
+	"github.com/stablyio/go-ethereum/cryptothor/ecies"
 	"github.com/stablyio/go-ethereum/rlp"
 )
 
@@ -93,14 +92,14 @@ func (e *Envelope) Seal(options *MessageParams) error {
 	}
 
 	buf := make([]byte, 64)
-	h := crypto.Keccak256(e.rlpWithoutNonce())
+	h := cryptothor.Keccak256(e.rlpWithoutNonce())
 	copy(buf[:32], h)
 
 	finish := time.Now().Add(time.Duration(options.WorkTime) * time.Second).UnixNano()
 	for nonce := uint64(0); time.Now().UnixNano() < finish; {
 		for i := 0; i < 1024; i++ {
 			binary.BigEndian.PutUint64(buf[56:], nonce)
-			d := new(big.Int).SetBytes(crypto.Keccak256(buf))
+			d := new(big.Int).SetBytes(cryptothor.Keccak256(buf))
 			firstBit := math.FirstBitSet(d)
 			if firstBit > bestBit {
 				e.Nonce, bestBit = nonce, firstBit
@@ -130,10 +129,10 @@ func (e *Envelope) PoW() float64 {
 
 func (e *Envelope) calculatePoW(diff uint32) {
 	buf := make([]byte, 64)
-	h := crypto.Keccak256(e.rlpWithoutNonce())
+	h := cryptothor.Keccak256(e.rlpWithoutNonce())
 	copy(buf[:32], h)
 	binary.BigEndian.PutUint64(buf[56:], e.Nonce)
-	d := new(big.Int).SetBytes(crypto.Keccak256(buf))
+	d := new(big.Int).SetBytes(cryptothor.Keccak256(buf))
 	firstBit := math.FirstBitSet(d)
 	x := gmath.Pow(2, float64(firstBit))
 	x /= float64(e.size())
@@ -158,7 +157,7 @@ func (e *Envelope) powToFirstBit(pow float64) int {
 func (e *Envelope) Hash() common.Hash {
 	if (e.hash == common.Hash{}) {
 		encoded, _ := rlp.EncodeToBytes(e)
-		e.hash = crypto.Keccak256Hash(encoded)
+		e.hash = cryptothor.Keccak256Hash(encoded)
 	}
 	return e.hash
 }
@@ -178,7 +177,7 @@ func (e *Envelope) DecodeRLP(s *rlp.Stream) error {
 	if err := rlp.DecodeBytes(raw, (*rlpenv)(e)); err != nil {
 		return err
 	}
-	e.hash = crypto.Keccak256Hash(raw)
+	e.hash = cryptothor.Keccak256Hash(raw)
 	return nil
 }
 
@@ -225,7 +224,7 @@ func (e *Envelope) Open(watcher *Filter) (msg *ReceivedMessage) {
 	} else if watcher.expectsSymmetricEncryption() {
 		msg, _ = e.OpenSymmetric(watcher.KeySym)
 		if msg != nil {
-			msg.SymKeyHash = crypto.Keccak256Hash(watcher.KeySym)
+			msg.SymKeyHash = cryptothor.Keccak256Hash(watcher.KeySym)
 		}
 	}
 

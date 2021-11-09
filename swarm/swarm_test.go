@@ -29,7 +29,7 @@ import (
 	"time"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/rpc"
 	"github.com/stablyio/go-ethereum/swarm/api"
 )
@@ -169,7 +169,7 @@ func TestNewSwarm(t *testing.T) {
 
 			config.Path = dir
 
-			privkey, err := crypto.GenerateKey()
+			privkey, err := cryptothor.GenerateKey()
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -306,7 +306,7 @@ func TestLocalStoreAndRetrieve(t *testing.T) {
 
 	config.Path = dir
 
-	privkey, err := crypto.GenerateKey()
+	privkey, err := cryptothor.GenerateKey()
 	if err != nil {
 		t.Fatal(err)
 	}

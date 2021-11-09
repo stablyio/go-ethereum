@@ -36,7 +36,6 @@ import (
 	"github.com/stablyio/go-ethereum/core/rawdb"
 	"github.com/stablyio/go-ethereum/core/types"
 	"github.com/stablyio/go-ethereum/core/vm"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/p2p"
 	"github.com/stablyio/go-ethereum/params"

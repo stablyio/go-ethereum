@@ -21,14 +21,14 @@ import (
 	"testing"
 
 	"github.com/stablyio/go-ethereum/core/types"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 )
 
 // Tests that transactions can be added to strict lists and list contents and
 // nonce boundaries are correctly maintained.
 func TestStrictTxListAdd(t *testing.T) {
 	// Generate a list of transactions to insert
-	key, _ := crypto.GenerateKey()
+	key, _ := cryptothor.GenerateKey()
 
 	txs := make(types.Transactions, 1024)
 	for i := 0; i < len(txs); i++ {

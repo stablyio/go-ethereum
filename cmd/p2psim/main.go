@@ -45,7 +45,6 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/p2p"
 	"github.com/stablyio/go-ethereum/p2p/discover"
 	"github.com/stablyio/go-ethereum/p2p/simulations"

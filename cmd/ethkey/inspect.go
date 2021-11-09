@@ -23,7 +23,6 @@ import (
 
 	"github.com/stablyio/go-ethereum/accounts/keystore"
 	"github.com/stablyio/go-ethereum/cmd/utils"
-	"github.com/stablyio/go-ethereum/crypto"
 	"gopkg.in/urfave/cli.v1"
 )
 

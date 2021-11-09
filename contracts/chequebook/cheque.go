@@ -41,7 +41,6 @@ import (
 	"github.com/stablyio/go-ethereum/common/hexutil"
 	"github.com/stablyio/go-ethereum/contracts/chequebook/contract"
 	"github.com/stablyio/go-ethereum/core/types"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/swarm/services/swap/swap"
 )

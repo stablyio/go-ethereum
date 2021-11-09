@@ -28,7 +28,7 @@ import (
 	"reflect"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 )
 
 const jsondata = `
@@ -184,7 +184,7 @@ func TestMethodSignature(t *testing.T) {
 		t.Error("signature mismatch", exp, "!=", m.Sig())
 	}
 
-	idexp := crypto.Keccak256([]byte(exp))[:4]
+	idexp := cryptothorthor.Keccak256([]byte(exp))[:4]
 	if !bytes.Equal(m.Id(), idexp) {
 		t.Errorf("expected ids to match %x != %x", m.Id(), idexp)
 	}
@@ -204,7 +204,7 @@ func TestMultiPack(t *testing.T) {
 		t.FailNow()
 	}
 
-	sig := crypto.Keccak256([]byte("bar(uint32,uint16)"))[:4]
+	sig := cryptothorthor.Keccak256([]byte("bar(uint32,uint16)"))[:4]
 	sig = append(sig, make([]byte, 64)...)
 	sig[35] = 10
 	sig[67] = 11

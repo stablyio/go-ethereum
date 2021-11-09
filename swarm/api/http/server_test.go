@@ -36,7 +36,7 @@ import (
 	"time"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/swarm/api"
 	swarm "github.com/stablyio/go-ethereum/swarm/api/client"
@@ -98,7 +98,7 @@ func serverFunc(api *api.API) testutil.TestServer {
 }
 
 func newTestSigner() (*mru.GenericSigner, error) {
-	privKey, err := crypto.HexToECDSA("deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef")
+	privKey, err := cryptothor.HexToECDSA("deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef")
 	if err != nil {
 		return nil, err
 	}

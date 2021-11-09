@@ -42,7 +42,6 @@ import (
 	"github.com/stablyio/go-ethereum/params"
 	"github.com/stablyio/go-ethereum/rlp"
 	"github.com/stablyio/go-ethereum/trie"
-	"github.com/hashicorp/golang-lru"
 	"gopkg.in/karalabe/cookiejar.v2/collections/prque"
 )
 

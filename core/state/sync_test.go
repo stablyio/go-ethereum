@@ -22,7 +22,7 @@ import (
 	"testing"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/ethdb"
 	"github.com/stablyio/go-ethereum/trie"
 )
@@ -54,7 +54,7 @@ func makeTestState() (Database, common.Hash, []*testAccount) {
 		acc.nonce = uint64(42 * i)
 
 		if i%3 == 0 {
-			obj.SetCode(crypto.Keccak256Hash([]byte{i, i, i, i, i}), []byte{i, i, i, i, i})
+			obj.SetCode(cryptothor.Keccak256Hash([]byte{i, i, i, i, i}), []byte{i, i, i, i, i})
 			acc.code = []byte{i, i, i, i, i}
 		}
 		state.updateStateObject(obj)
@@ -324,7 +324,7 @@ func TestIncompleteStateSync(t *testing.T) {
 	checkSubtries:
 		for _, hash := range added {
 			for _, acc := range srcAccounts {
-				if hash == crypto.Keccak256Hash(acc.code) {
+				if hash == cryptothor.Keccak256Hash(acc.code) {
 					continue checkSubtries // skip trie check of code nodes.
 				}
 			}

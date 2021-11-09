@@ -32,7 +32,7 @@ import (
 	"github.com/stablyio/go-ethereum/core"
 	"github.com/stablyio/go-ethereum/core/types"
 	"github.com/stablyio/go-ethereum/core/vm"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/eth/downloader"
 	"github.com/stablyio/go-ethereum/ethdb"
 	"github.com/stablyio/go-ethereum/event"
@@ -42,8 +42,8 @@ import (
 )
 
 var (
-	testBankKey, _ = crypto.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")
-	testBank       = crypto.PubkeyToAddress(testBankKey.PublicKey)
+	testBankKey, _ = cryptothor.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")
+	testBank       = cryptothor.PubkeyToAddress(testBankKey.PublicKey)
 )
 
 // newTestProtocolManager creates a new protocol manager for testing purposes,

@@ -40,7 +40,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 )
 
 var dumpEnc bool
@@ -234,7 +234,7 @@ func BenchmarkGenSharedKeyP256(b *testing.B) {
 
 // Benchmark the generation of S256 shared keys.
 func BenchmarkGenSharedKeyS256(b *testing.B) {
-	prv, err := GenerateKey(rand.Reader, crypto.S256(), nil)
+	prv, err := GenerateKey(rand.Reader, cryptothor.S256(), nil)
 	if err != nil {
 		fmt.Println(err.Error())
 		b.FailNow()
@@ -485,7 +485,7 @@ func TestSharedKeyStatic(t *testing.T) {
 }
 
 func hexKey(prv string) *PrivateKey {
-	key, err := crypto.HexToECDSA(prv)
+	key, err := cryptothor.HexToECDSA(prv)
 	if err != nil {
 		panic(err)
 	}

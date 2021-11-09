@@ -28,7 +28,6 @@ import (
 	"github.com/stablyio/go-ethereum/core"
 	"github.com/stablyio/go-ethereum/core/state"
 	"github.com/stablyio/go-ethereum/core/vm"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/ethdb"
 	"github.com/stablyio/go-ethereum/params"
 )

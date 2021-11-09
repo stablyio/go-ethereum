@@ -32,8 +32,7 @@ import (
 	"time"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
-	"github.com/stablyio/go-ethereum/crypto/secp256k1"
+	"github.com/stablyio/go-ethereum/cryptothor/secp256k1"
 )
 
 const NodeIDBits = 512
@@ -67,7 +66,7 @@ func NewNode(id NodeID, ip net.IP, udpPort, tcpPort uint16) *Node {
 		UDP: udpPort,
 		TCP: tcpPort,
 		ID:  id,
-		sha: crypto.Keccak256Hash(id[:]),
+		sha: cryptothor.Keccak256Hash(id[:]),
 	}
 }
 
@@ -318,7 +317,7 @@ func PubkeyID(pub *ecdsa.PublicKey) NodeID {
 // Pubkey returns the public key represented by the node ID.
 // It returns an error if the ID is not a point on the curve.
 func (id NodeID) Pubkey() (*ecdsa.PublicKey, error) {
-	p := &ecdsa.PublicKey{Curve: crypto.S256(), X: new(big.Int), Y: new(big.Int)}
+	p := &ecdsa.PublicKey{Curve: cryptothor.S256(), X: new(big.Int), Y: new(big.Int)}
 	half := len(id) / 2
 	p.X.SetBytes(id[:half])
 	p.Y.SetBytes(id[half:])

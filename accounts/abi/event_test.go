@@ -26,7 +26,7 @@ import (
 	"testing"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -91,8 +91,8 @@ func TestEventId(t *testing.T) {
 			{ "type" : "event", "name" : "check", "inputs": [{ "name" : "t", "type": "address" }, { "name": "b", "type": "uint256" }] }
 			]`,
 			expectations: map[string]common.Hash{
-				"balance": crypto.Keccak256Hash([]byte("balance(uint256)")),
-				"check":   crypto.Keccak256Hash([]byte("check(address,uint256)")),
+				"balance": cryptothor.Keccak256Hash([]byte("balance(uint256)")),
+				"check":   cryptothor.Keccak256Hash([]byte("check(address,uint256)")),
 			},
 		},
 	}

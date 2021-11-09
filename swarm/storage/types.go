@@ -19,7 +19,6 @@ package storage
 import (
 	"bytes"
 	"context"
-	"crypto"
 	"crypto/rand"
 	"encoding/binary"
 	"fmt"
@@ -28,7 +27,7 @@ import (
 	"sync"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto/sha3"
+	"github.com/stablyio/go-ethereum/cryptothor/sha3"
 	"github.com/stablyio/go-ethereum/swarm/bmt"
 	"github.com/stablyio/go-ethereum/swarm/chunk"
 )
@@ -109,7 +108,7 @@ var ZeroAddr = Address(common.Hash{}.Bytes())
 func MakeHashFunc(hash string) SwarmHasher {
 	switch hash {
 	case "SHA256":
-		return func() SwarmHash { return &HashWithLength{crypto.SHA256.New()} }
+		return func() SwarmHash { return &HashWithLength{cryptothor.SHA256.New()} }
 	case "SHA3":
 		return func() SwarmHash { return &HashWithLength{sha3.NewKeccak256()} }
 	case "BMT":

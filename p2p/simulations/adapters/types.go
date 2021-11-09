@@ -26,7 +26,6 @@ import (
 	"strconv"
 
 	"github.com/docker/docker/pkg/reexec"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/node"
 	"github.com/stablyio/go-ethereum/p2p"
 	"github.com/stablyio/go-ethereum/p2p/discover"

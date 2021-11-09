@@ -14,9 +14,10 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
+//go:build !nacl && !js && !nocgo
 // +build !nacl,!js,!nocgo
 
-package crypto
+package cryptothor
 
 import (
 	"crypto/ecdsa"
@@ -24,7 +25,7 @@ import (
 	"fmt"
 
 	"github.com/stablyio/go-ethereum/common/math"
-	"github.com/stablyio/go-ethereum/crypto/secp256k1"
+	"github.com/stablyio/go-ethereum/cryptothor/secp256k1"
 )
 
 // Ecrecover returns the uncompressed public key that created the given signature.

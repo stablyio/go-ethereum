@@ -28,7 +28,7 @@ import (
 	"time"
 
 	"github.com/stablyio/go-ethereum/contracts/ens"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/swarm/chunk"
 	"github.com/stablyio/go-ethereum/swarm/multihash"
@@ -208,7 +208,7 @@ func TestReverse(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Retrieve address from signature fail: %v", err)
 	}
-	originaladdress := crypto.PubkeyToAddress(signer.PrivKey.PublicKey)
+	originaladdress := cryptothor.PubkeyToAddress(signer.PrivKey.PublicKey)
 
 	// check that the metadata retrieved from the chunk matches what we gave it
 	if recoveredaddress != originaladdress {
@@ -877,17 +877,17 @@ func setupTest(timeProvider timestampProvider, signer Signer) (rh *TestHandler, 
 }
 
 func newAliceSigner() *GenericSigner {
-	privKey, _ := crypto.HexToECDSA("deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef")
+	privKey, _ := cryptothor.HexToECDSA("deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef")
 	return NewGenericSigner(privKey)
 }
 
 func newBobSigner() *GenericSigner {
-	privKey, _ := crypto.HexToECDSA("accedeaccedeaccedeaccedeaccedeaccedeaccedeaccedeaccedeaccedecaca")
+	privKey, _ := cryptothor.HexToECDSA("accedeaccedeaccedeaccedeaccedeaccedeaccedeaccedeaccedeaccedecaca")
 	return NewGenericSigner(privKey)
 }
 
 func newCharlieSigner() *GenericSigner {
-	privKey, _ := crypto.HexToECDSA("facadefacadefacadefacadefacadefacadefacadefacadefacadefacadefaca")
+	privKey, _ := cryptothor.HexToECDSA("facadefacadefacadefacadefacadefacadefacadefacadefacadefacadefaca")
 	return NewGenericSigner(privKey)
 }
 

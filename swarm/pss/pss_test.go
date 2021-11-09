@@ -36,7 +36,7 @@ import (
 
 	"github.com/stablyio/go-ethereum/common"
 	"github.com/stablyio/go-ethereum/common/hexutil"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/metrics"
 	"github.com/stablyio/go-ethereum/metrics/influxdb"
@@ -316,7 +316,7 @@ func TestHandlerConditions(t *testing.T) {
 
 	t.Skip("Disabled due to probable faulty logic for outbox expectations")
 	// setup
-	privkey, err := crypto.GenerateKey()
+	privkey, err := cryptothor.GenerateKey()
 	if err != nil {
 		t.Fatal(err.Error())
 	}
@@ -500,7 +500,7 @@ func TestKeys(t *testing.T) {
 
 func TestGetPublickeyEntries(t *testing.T) {
 
-	privkey, err := crypto.GenerateKey()
+	privkey, err := cryptothor.GenerateKey()
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -512,11 +512,11 @@ func TestGetPublickeyEntries(t *testing.T) {
 	topicaddr[Topic{0x2a}] = peeraddr[:16]
 	topicaddr[Topic{0x02, 0x9a}] = []byte{}
 
-	remoteprivkey, err := crypto.GenerateKey()
+	remoteprivkey, err := cryptothor.GenerateKey()
 	if err != nil {
 		t.Fatal(err)
 	}
-	remotepubkeybytes := crypto.FromECDSAPub(&remoteprivkey.PublicKey)
+	remotepubkeybytes := cryptothor.FromECDSAPub(&remoteprivkey.PublicKey)
 	remotepubkeyhex := common.ToHex(remotepubkeybytes)
 
 	pssapi := NewAPI(ps)
@@ -577,7 +577,7 @@ func (t *pssTestPeer) Off() network.OverlayAddr {
 func TestMismatch(t *testing.T) {
 
 	// create privkey for forwarder node
-	privkey, err := crypto.GenerateKey()
+	privkey, err := cryptothor.GenerateKey()
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1343,7 +1343,7 @@ func benchmarkAsymKeySend(b *testing.B) {
 	ps.SetPeerPublicKey(&privkey.PublicKey, topic, &to)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		ps.SendAsym(common.ToHex(crypto.FromECDSAPub(&privkey.PublicKey)), topic, msg)
+		ps.SendAsym(common.ToHex(cryptothor.FromECDSAPub(&privkey.PublicKey)), topic, msg)
 	}
 }
 func BenchmarkSymkeyBruteforceChangeaddr(b *testing.B) {
@@ -1639,7 +1639,7 @@ func newServices(allowRaw bool) adapters.Services {
 func newTestPss(privkey *ecdsa.PrivateKey, overlay network.Overlay, ppextra *PssParams) *Pss {
 
 	var nid discover.NodeID
-	copy(nid[:], crypto.FromECDSAPub(&privkey.PublicKey))
+	copy(nid[:], cryptothor.FromECDSAPub(&privkey.PublicKey))
 	addr := network.NewAddrFromNodeID(nid)
 
 	// set up routing if kademlia is not passed to us

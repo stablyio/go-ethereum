@@ -28,7 +28,6 @@ import (
 	"github.com/stablyio/go-ethereum/common"
 	"github.com/stablyio/go-ethereum/common/hexutil"
 	"github.com/stablyio/go-ethereum/core/vm"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/log"
 	duktape "gopkg.in/olebedev/go-duktape.v3"
 )

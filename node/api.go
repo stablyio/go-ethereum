@@ -23,7 +23,6 @@ import (
 	"time"
 
 	"github.com/stablyio/go-ethereum/common/hexutil"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/metrics"
 	"github.com/stablyio/go-ethereum/p2p"
 	"github.com/stablyio/go-ethereum/p2p/discover"

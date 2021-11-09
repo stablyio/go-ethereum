@@ -26,7 +26,6 @@ import (
 	"github.com/stablyio/go-ethereum/accounts"
 	"github.com/stablyio/go-ethereum/accounts/keystore"
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
 )
 
 const (

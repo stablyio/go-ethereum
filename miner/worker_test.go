@@ -28,7 +28,7 @@ import (
 	"github.com/stablyio/go-ethereum/core"
 	"github.com/stablyio/go-ethereum/core/types"
 	"github.com/stablyio/go-ethereum/core/vm"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/ethdb"
 	"github.com/stablyio/go-ethereum/event"
 	"github.com/stablyio/go-ethereum/params"
@@ -41,12 +41,12 @@ var (
 	cliqueChainConfig *params.ChainConfig
 
 	// Test accounts
-	testBankKey, _  = crypto.GenerateKey()
-	testBankAddress = crypto.PubkeyToAddress(testBankKey.PublicKey)
+	testBankKey, _  = cryptothor.GenerateKey()
+	testBankAddress = cryptothor.PubkeyToAddress(testBankKey.PublicKey)
 	testBankFunds   = big.NewInt(1000000000000000000)
 
-	acc1Key, _ = crypto.GenerateKey()
-	acc1Addr   = crypto.PubkeyToAddress(acc1Key.PublicKey)
+	acc1Key, _ = cryptothor.GenerateKey()
+	acc1Addr   = cryptothor.PubkeyToAddress(acc1Key.PublicKey)
 
 	// Test transactions
 	pendingTxs []*types.Transaction

@@ -22,7 +22,6 @@ import (
 	"io"
 	"net"
 
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/rlp"
 )
 

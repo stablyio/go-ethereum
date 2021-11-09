@@ -25,7 +25,6 @@ import (
 
 	"github.com/stablyio/go-ethereum/common"
 	"github.com/stablyio/go-ethereum/contracts/ens"
-	"github.com/stablyio/go-ethereum/crypto"
 	"github.com/stablyio/go-ethereum/node"
 	"github.com/stablyio/go-ethereum/p2p/discover"
 	"github.com/stablyio/go-ethereum/swarm/log"

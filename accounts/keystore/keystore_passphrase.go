@@ -37,10 +37,10 @@ import (
 	"io/ioutil"
 	"path/filepath"
 
+	"github.com/pborman/uuid"
 	"github.com/stablyio/go-ethereum/common"
 	"github.com/stablyio/go-ethereum/common/math"
 	"github.com/stablyio/go-ethereum/crypto"
-	"github.com/pborman/uuid"
 	"golang.org/x/crypto/pbkdf2"
 	"golang.org/x/crypto/scrypt"
 )

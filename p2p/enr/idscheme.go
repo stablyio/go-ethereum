@@ -22,8 +22,7 @@ import (
 	"sync"
 
 	"github.com/stablyio/go-ethereum/common/math"
-	"github.com/stablyio/go-ethereum/crypto"
-	"github.com/stablyio/go-ethereum/crypto/sha3"
+	"github.com/stablyio/go-ethereum/cryptothor/sha3"
 	"github.com/stablyio/go-ethereum/rlp"
 )
 
@@ -69,7 +68,7 @@ func SignV4(r *Record, privkey *ecdsa.PrivateKey) error {
 
 	h := sha3.NewKeccak256()
 	rlp.Encode(h, cpy.AppendElements(nil))
-	sig, err := crypto.Sign(h.Sum(nil), privkey)
+	sig, err := cryptothor.Sign(h.Sum(nil), privkey)
 	if err != nil {
 		return err
 	}
@@ -95,7 +94,7 @@ func (v4ID) Verify(r *Record, sig []byte) error {
 
 	h := sha3.NewKeccak256()
 	rlp.Encode(h, r.AppendElements(nil))
-	if !crypto.VerifySignature(entry, h.Sum(nil), sig) {
+	if !cryptothor.VerifySignature(entry, h.Sum(nil), sig) {
 		return errInvalidSig
 	}
 	return nil
@@ -110,5 +109,5 @@ func (v4ID) NodeAddr(r *Record) []byte {
 	buf := make([]byte, 64)
 	math.ReadBits(pubkey.X, buf[:32])
 	math.ReadBits(pubkey.Y, buf[32:])
-	return crypto.Keccak256(buf)
+	return cryptothor.Keccak256(buf)
 }

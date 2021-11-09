@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/stablyio/go-ethereum/common/hexutil"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/log"
 	"github.com/stablyio/go-ethereum/node"
 	"github.com/stablyio/go-ethereum/p2p/discover"
@@ -137,7 +137,7 @@ func TestStart(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	pubkey, err := crypto.UnmarshalPubkey(pubkeybytes)
+	pubkey, err := cryptothor.UnmarshalPubkey(pubkeybytes)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -233,8 +233,8 @@ func newServices(allowRaw bool) adapters.Services {
 			if err != nil {
 				return nil, err
 			}
-			//psses[common.ToHex(crypto.FromECDSAPub(&privkey.PublicKey))] = ps
-			psses[hexutil.Encode(crypto.FromECDSAPub(&privkey.PublicKey))] = ps
+			//psses[common.ToHex(cryptothor.FromECDSAPub(&privkey.PublicKey))] = ps
+			psses[hexutil.Encode(cryptothor.FromECDSAPub(&privkey.PublicKey))] = ps
 			return ps, nil
 		},
 		"bzz": func(ctx *adapters.ServiceContext) (node.Service, error) {

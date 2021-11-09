@@ -26,7 +26,7 @@ import (
 	"testing"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 	"github.com/stablyio/go-ethereum/swarm/api"
 	swarmhttp "github.com/stablyio/go-ethereum/swarm/api/http"
 	"github.com/stablyio/go-ethereum/swarm/multihash"
@@ -360,7 +360,7 @@ func TestClientMultipartUpload(t *testing.T) {
 }
 
 func newTestSigner() (*mru.GenericSigner, error) {
-	privKey, err := crypto.HexToECDSA("deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef")
+	privKey, err := cryptothor.HexToECDSA("deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef")
 	if err != nil {
 		return nil, err
 	}

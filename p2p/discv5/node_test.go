@@ -28,7 +28,7 @@ import (
 	"time"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
+	"github.com/stablyio/go-ethereum/cryptothor"
 )
 
 func ExampleNewNode() {
@@ -195,7 +195,7 @@ func TestHexID(t *testing.T) {
 func TestNodeID_recover(t *testing.T) {
 	prv := newkey()
 	hash := make([]byte, 32)
-	sig, err := crypto.Sign(hash, prv)
+	sig, err := cryptothor.Sign(hash, prv)
 	if err != nil {
 		t.Fatalf("signing error: %v", err)
 	}

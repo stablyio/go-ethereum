@@ -13,9 +13,8 @@ import (
 	"time"
 
 	"github.com/stablyio/go-ethereum/common"
-	"github.com/stablyio/go-ethereum/crypto"
-	"github.com/stablyio/go-ethereum/crypto/ecies"
-	"github.com/stablyio/go-ethereum/crypto/sha3"
+	"github.com/stablyio/go-ethereum/cryptothor/ecies"
+	"github.com/stablyio/go-ethereum/cryptothor/sha3"
 	"github.com/stablyio/go-ethereum/swarm/log"
 	"github.com/stablyio/go-ethereum/swarm/sctx"
 	"github.com/stablyio/go-ethereum/swarm/storage"
@@ -184,7 +183,7 @@ func NewSessionKeyPK(private *ecdsa.PrivateKey, public *ecdsa.PublicKey, salt []
 		return nil, err
 	}
 	bytes = append(salt, bytes...)
-	sessionKey := crypto.Keccak256(bytes)
+	sessionKey := cryptothor.Keccak256(bytes)
 	return sessionKey, nil
 }
 
@@ -238,7 +237,7 @@ func (a *API) doDecrypt(ctx context.Context, credentials string, pk *ecdsa.Priva
 			if err != nil {
 				return ErrDecrypt
 			}
-			publisher, err := crypto.DecompressPubkey(publisherBytes)
+			publisher, err := cryptothor.DecompressPubkey(publisherBytes)
 			if err != nil {
 				return ErrDecrypt
 			}
@@ -265,7 +264,7 @@ func (a *API) doDecrypt(ctx context.Context, credentials string, pk *ecdsa.Priva
 			if err != nil {
 				return ErrDecrypt
 			}
-			publisher, err := crypto.DecompressPubkey(publisherBytes)
+			publisher, err := cryptothor.DecompressPubkey(publisherBytes)
 			if err != nil {
 				return ErrDecrypt
 			}
@@ -362,7 +361,7 @@ func DoPKNew(ctx *cli.Context, privateKey *ecdsa.PrivateKey, granteePublicKey st
 		return nil, nil, err
 	}
 
-	granteePub, err := crypto.DecompressPubkey(b)
+	granteePub, err := cryptothor.DecompressPubkey(b)
 	if err != nil {
 		log.Error("error decompressing grantee public key", "err", err)
 		return nil, nil, err
@@ -374,7 +373,7 @@ func DoPKNew(ctx *cli.Context, privateKey *ecdsa.PrivateKey, granteePublicKey st
 		return nil, nil, err
 	}
 
-	ae, err = NewAccessEntryPK(hex.EncodeToString(crypto.CompressPubkey(&privateKey.PublicKey)), salt)
+	ae, err = NewAccessEntryPK(hex.EncodeToString(cryptothor.CompressPubkey(&privateKey.PublicKey)), salt)
 	if err != nil {
 		log.Error("error generating access entry", "err", err)
 		return nil, nil, err
@@ -388,7 +387,7 @@ func DoACTNew(ctx *cli.Context, privateKey *ecdsa.PrivateKey, salt []byte, grant
 		return nil, nil, nil, errors.New("did not get any grantee public keys")
 	}
 
-	publisherPub := hex.EncodeToString(crypto.CompressPubkey(&privateKey.PublicKey))
+	publisherPub := hex.EncodeToString(cryptothor.CompressPubkey(&privateKey.PublicKey))
 	grantees = append(grantees, publisherPub)
 
 	accessKey = make([]byte, 32)
@@ -412,7 +411,7 @@ func DoACTNew(ctx *cli.Context, privateKey *ecdsa.PrivateKey, salt []byte, grant
 			return nil, nil, nil, err
 		}
 
-		granteePub, err := crypto.DecompressPubkey(b)
+		granteePub, err := cryptothor.DecompressPubkey(b)
 		if err != nil {
 			log.Error("error decompressing grantee public key", "err", err)
 			return nil, nil, nil, err
@@ -446,7 +445,7 @@ func DoACTNew(ctx *cli.Context, privateKey *ecdsa.PrivateKey, salt []byte, grant
 		})
 	}
 
-	ae, err = NewAccessEntryACT(hex.EncodeToString(crypto.CompressPubkey(&privateKey.PublicKey)), salt, "")
+	ae, err = NewAccessEntryACT(hex.EncodeToString(cryptothor.CompressPubkey(&privateKey.PublicKey)), salt, "")
 	if err != nil {
 		return nil, nil, nil, err
 	}

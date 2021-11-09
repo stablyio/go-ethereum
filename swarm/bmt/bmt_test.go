@@ -28,7 +28,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stablyio/go-ethereum/crypto/sha3"
+	"github.com/stablyio/go-ethereum/cryptothor/sha3"
 )
 
 // the actual data length generated (could be longer than max datalength of the BMT)
